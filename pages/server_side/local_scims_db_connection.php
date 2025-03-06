@@ -4,10 +4,10 @@
 // $username = "root";
 // $password = "";
 
-$host = "localhost";
-$dbname = "scims";
+$host = "34.92.117.58";
+$dbname = "sccdrrmo";
 $username = "root";
-$password = "";
+$password = "I0nvNUWNXoYI";
 
 try {
    $con_scims = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [
