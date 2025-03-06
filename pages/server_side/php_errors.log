@@ -1,0 +1,80 @@
+[20-Feb-2025 09:46:25 Asia/Manila] PHP Notice:  Undefined variable: con in C:\xampp\htdocs\Vamos-Local\pages\server_side\process_individualSave.php on line 36
+[20-Feb-2025 09:46:25 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\Vamos-Local\pages\server_side\process_individualSave.php:36
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\Vamos-Local\pages\server_side\process_individualSave.php on line 36
+[20-Feb-2025 09:49:06 Asia/Manila] Database Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'scims.tbl_individual' doesn't exist
+[20-Feb-2025 09:49:15 Asia/Manila] Database Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'scims.tbl_individual' doesn't exist
+[20-Feb-2025 09:49:31 Asia/Manila] Database Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'scims.tbl_individual' doesn't exist
+[20-Feb-2025 09:54:23 Asia/Manila] Database Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'scims.tbl_individual' doesn't exist
+[20-Feb-2025 09:57:01 Asia/Manila] Database Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'scims.tbl_individual' doesn't exist
+[20-Feb-2025 09:57:38 Asia/Manila] Database Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'scims.tbl_individual' doesn't exist
+[20-Feb-2025 09:59:26 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'ZJNXJG5162' for key 'PRIMARY'
+[20-Feb-2025 09:59:40 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'ZJNXJG5162' for key 'PRIMARY'
+[20-Feb-2025 10:02:20 Asia/Manila] Database Error: SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1
+[24-Feb-2025 08:24:36 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-ZJNXJG5162' for key 'PRIMARY'
+[24-Feb-2025 08:25:57 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-ZJNXJG5162' for key 'PRIMARY'
+[24-Feb-2025 08:26:16 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-ZJNXJG5162' for key 'PRIMARY'
+[24-Feb-2025 09:53:07 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:03:15 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:04:52 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:04:56 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:04:57 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:04:57 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:04:57 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:04:58 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:04:59 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:01 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:01 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:02 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:02 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:03 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:03 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:04 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:04 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:05 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:05 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:05 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:05:06 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:13:30 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-ACCLYN6328' for key 'PRIMARY'
+[24-Feb-2025 10:13:48 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:13:48 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:13:49 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:13:49 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 10:13:49 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 14:54:00 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-' for key 'PRIMARY'
+[24-Feb-2025 15:11:50 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'KYANIX12124-AETISZ5897' for key 'PRIMARY'
+[24-Feb-2025 15:12:08 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'birth_date' cannot be null
+[24-Feb-2025 18:04:33 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'birth_date' cannot be null
+[24-Feb-2025 18:04:38 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'birth_date' cannot be null
+[27-Feb-2025 08:47:41 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:47:53 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:48:29 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:48:30 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:48:40 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:51:31 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:52:01 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:59:24 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:59:37 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 08:59:46 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:03:42 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:07:17 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:09:09 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:09:57 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:11:40 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:12:22 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:13:26 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:15:07 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:15:31 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:17:49 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:18:17 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:21:54 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:22:03 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:22:52 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 09:37:20 Asia/Manila] Database Error: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[27-Feb-2025 18:09:31 Asia/Manila] Database Error: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
+[27-Feb-2025 18:09:31 Asia/Manila] Database Error: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
+[27-Feb-2025 18:09:31 Asia/Manila] Database Error: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
+[27-Feb-2025 18:09:31 Asia/Manila] Database Error: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
+[27-Feb-2025 18:09:31 Asia/Manila] Database Error: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
+[04-Mar-2025 10:36:24 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'birth_date' cannot be null
