@@ -1,13 +1,10 @@
 <?php
-// $host = "localhost";
-// $dbname = "sccdrrmo";
-// $username = "root";
-// $password = "";
 
 $host = "34.92.117.58";
 $dbname = "sccdrrmo";
 $username = "root";
 $password = "I0nvNUWNXoYI";
+
 
 
 
