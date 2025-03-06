@@ -1,13 +1,9 @@
 <?php
-// $host = "localhost";
-// $dbname = "sccdrrmo";
-// $username = "root";
-// $password = "";
-
-$host = "34.92.117.58";
+$host = "localhost";
 $dbname = "sccdrrmo";
 $username = "root";
-$password = "I0nvNUWNXoYI";
+$password = "";
+
 
 try {
    $con_sccdrrmo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [
