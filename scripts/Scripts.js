@@ -270,7 +270,8 @@ $(document).ready(function () {
     theme: "bootstrap4",
     width: "100%",
     ajax: {
-      url: "/vamos-local/pages/server_side/process_sccdrrmo.php",
+      // url: "/vamos-local/pages/server_side/process_sccdrrmo.php",
+      url: "/pages/server_side/process_sccdrrmo.php",
       type: "POST",
       dataType: "json",
       delay: 250,
@@ -423,10 +424,11 @@ $(document).ready(function () {
 
 
 
-    let formData = new FormData($("#personalInfoForm")[0]);
     // let formData = new FormData($("#personalInfoForm")[0]);
+    let formData = getTableData();
 
-    let photoValue = $("#photo").attr("src");
+
+    let photoValue = $("#photo").attr("src"); 
     let extractedPhotoValue = photoValue.split("/images/")[1];
     let entityNumValue = $("#entityNum").val();
     let statusBadgeValue = $("#statusBadge").text();
@@ -436,7 +438,7 @@ $(document).ready(function () {
     formData.append('entityNum', entityNumValue);
 
     // Convert tableData to JSON and append it to formData
-    formData.append("educationData", JSON.stringify(getTableData()));
+    // formData.append("educationData", JSON.stringify(getTableData()));
 
 
     for (let pair of formData.entries()) {
@@ -649,6 +651,14 @@ function getTableData() {
     tableData.push(rowData);
   });
 
-  console.log(tableData);
+  // Convert table data to JSON string
+  let tableDataJSON = JSON.stringify(tableData);
+
+  // Append table data to FormData
+  let formData = new FormData($("#personalInfoForm")[0]);
+  formData.append("educationData", tableDataJSON);
+
+  return formData; // Return the updated FormData object
+  // console.log(tableData);
 }
 //<---Educational Background JQuery Code--->

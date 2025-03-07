@@ -1,5 +1,5 @@
 <div class="card-body box-profile text-center d-flex flex-column justify-content-center">
-   <img id="photo" class="profile-user-img img-fluid img-circle" src="" alt="User Photo" style="width: 150px; height: 150px;">
+   <img id="photo" class="profile-user-img img-fluid img-circle" src="../dist/img/default.jpg" alt="User Photo" style="width: 150px; height: 150px;">
    <h5 style="margin: 2%;"><span class="badge" id="statusBadge" name="statusBadge"></span></h5>
 
    <div class="mt-2">

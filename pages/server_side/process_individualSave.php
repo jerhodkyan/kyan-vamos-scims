@@ -73,35 +73,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Save Individual Education
     try {
-        $educ_id = uniqid('edu', true);
-        $educ_id = str_replace('.', 'e', $educ_id);
+    // Prepare the SQL statement
+    $stmt = $pdo->prepare($insert_education_sql);
+
+        // Loop through the data and insert each record
+        foreach ($educationData as $entry) {
+        // Generate a unique educ_id using uniqid
+        $educ_id = uniqid('edu', true);  // Generates a unique ID
+        $educ_id = str_replace('.', 'e', $educ_id);  // Replace dots with 'e' to make the ID more URL friendly
         $educ_idValue = substr($educ_id, 0, 8) . '-' . substr($educ_id, 8, 4) . '-' . substr($educ_id, 12, 8) . '-' . substr($educ_id, 20, 4);
 
-        $individual_id = $individual_idValue;
-        $school_level = $_POST['level'] ?? '';
-        $school_name = $_POST['schoolName'] ?? '';
-        $year_graduated = !empty($_POST['yearGraduated']) ? date('Y-m-d', strtotime($_POST['yearGraduated'])) : null;
-        $units_earned = $_POST['unitsEarned'] ?? '';
-        $honors = $_POST['honors'] ?? '';
-        $remarks = $_POST['remarks'] ?? '';
+        // Assuming you have an 'individual_id' to bind (you should pass this value somewhere)
+        $entity_no = $_POST['entityNum'] ?? '';  // Replace this with the actual individual_id value, if available
+        // Bind the data to the prepared statement
+        $stmt->bindParam(':educ_id', $educ_idValue);  // Corrected to bind $educ_idValue
+        $stmt->bindParam(':entity_no', $entity_no);  // Bind the individual_id (you may need to get this from elsewhere)
+        $stmt->bindParam(':school_level', $entry['level']);
+        $stmt->bindParam(':school_name', $entry['schoolName']);
+        $stmt->bindParam(':school_name', $entry['schoolName']);
+        $stmt->bindParam(':school_name', $entry['schoolName']);
+        $stmt->bindParam(':school_units_earned', $entry['unitsEarned']);
+        $stmt->bindParam(':year_graduated', $entry['yearGraduated']);
+        $stmt->bindParam(':honors_received', $entry['honors']);
+        $stmt->bindParam(':remarks', $entry['remarks']);
 
-        $insert_education_sql = "INSERT INTO educational_background (
-            educ_id, individual_id, school_level, school_name, year_graduated, units_earned, honors, remarks
-        ) VALUES (
-            :educ_id, :individual_id, :school_level, :school_name, :year_graduated, :units_earned, :honors, :remarks
-        )";
-
-        $education_data = $con_scims->prepare($insert_education_sql);
-        $education_data->execute([
-            ':educ_id' => $educ_idValue,
-            ':individual_id' => $individual_id,
-            ':school_level' => $school_level,
-            ':school_name' => $school_name,
-            ':year_graduated' => $year_graduated,
-            ':units_earned' => $units_earned,
-            ':honors' => $honors,
-            ':remarks' => $remarks,
-        ]);
+        // Execute the query
+        $stmt->execute();
+        }
 
         $response['status'] = "success";
         $response['message'] = "Educational Record successfully inserted!";
