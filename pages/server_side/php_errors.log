@@ -78,3 +78,9 @@ Stack trace:
 [27-Feb-2025 18:09:31 Asia/Manila] Database Error: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
 [27-Feb-2025 18:09:31 Asia/Manila] Database Error: SQLSTATE[HY000]: General error: 2006 MySQL server has gone away
 [04-Mar-2025 10:36:24 Asia/Manila] Database Error: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'birth_date' cannot be null
+[07-Mar-2025 13:17:27 Asia/Manila] Database Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'individual_id' in 'field list'
+[07-Mar-2025 13:17:27 Asia/Manila] PHP Warning:  Undefined variable $pdo in /workspaces/kyan-vamos-scims/pages/server_side/process_individualSave.php on line 87
+[07-Mar-2025 13:17:27 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /workspaces/kyan-vamos-scims/pages/server_side/process_individualSave.php:87
+Stack trace:
+#0 {main}
+  thrown in /workspaces/kyan-vamos-scims/pages/server_side/process_individualSave.php on line 87
