@@ -1,6 +1,6 @@
 <?php
 // Load environment variables from .env file
-$config = parse_ini_file(__DIR__ . '../../.env');
+$config = parse_ini_file(__DIR__ . '/.env');
 
 try {
     $con_sccdrrmo = new PDO(
