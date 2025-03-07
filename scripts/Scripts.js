@@ -445,75 +445,75 @@ $(document).ready(function () {
       console.log(pair[0] + ': ' + pair[1]);
     }
 
-    // $.ajax({
-    //   url: "../pages/server_side/process_individualSave.php",
-    //   type: "POST",
-    //   data: formData,
-    //   processData: false,
-    //   contentType: false,
-    //   dataType: "json",
-    //   success: function (response) {
-    //     if (response.status === "success") {
-    //       Swal.fire({
-    //         toast: true,
-    //         position: "top-end",
-    //         icon: "success",
-    //         title: "Record saved successfully!",
-    //         showConfirmButton: false,
-    //         timer: 3000,
-    //         timerProgressBar: true,
-    //         didOpen: (toast) => {
-    //           toast.onmouseenter = Swal.stopTimer;
-    //           toast.onmouseleave = Swal.resumeTimer;
-    //         }
-    //       });
+    $.ajax({
+      url: "../pages/server_side/process_individualSave.php",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      dataType: "json",
+      success: function (response) {
+        if (response.status === "success") {
+          Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "success",
+            title: "Record saved successfully!",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
 
-    //       // Reset the form
-    //       $("#personalInfoForm")[0].reset();
-    //       $(".select2").val(null).trigger("change");
-    //       $("#photo").attr("src", "default.jpg");
-    //       $("#statusBadge").text('');
+          // Reset the form
+          $("#personalInfoForm")[0].reset();
+          $(".select2").val(null).trigger("change");
+          $("#photo").attr("src", "default.jpg");
+          $("#statusBadge").text('');
 
-    //       formData = new FormData();
-    //     } else {
-    //       Swal.fire({
-    //         toast: true,
-    //         position: "top-end",
-    //         icon: "error",
-    //         title: "Error: " + response.message,
-    //         showConfirmButton: false,
-    //         timer: 3000,
-    //         timerProgressBar: true
-    //       });
-    //     }
-    //   },
-    //   error: function (xhr, status, error) {
-    //     console.error("AJAX Error:", error);
-    //     console.error("Response Text:", xhr.responseText);
-    //     try {
-    //       let jsonResponse = JSON.parse(xhr.responseText);
-    //       Swal.fire({
-    //         toast: true,
-    //         position: "top-end",
-    //         icon: "error",
-    //         title: "Error: " + jsonResponse.message,
-    //         showConfirmButton: false,
-    //         timer: 3000,
-    //         timerProgressBar: true
-    //       });
-    //     } catch (e) {
-    //       Swal.fire({
-    //         toast: true,
-    //         position: "top-end",
-    //         icon: "error",
-    //         title: "Unexpected error. Please check logs.",
-    //         showConfirmButton: false,
-    //         timer: 3000,
-    //         timerProgressBar: true
-    //       });
-    //     }
-    //   }
-    // });
+          formData = new FormData();
+        } else {
+          Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Error: " + response.message,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("AJAX Error:", error);
+        console.error("Response Text:", xhr.responseText);
+        try {
+          let jsonResponse = JSON.parse(xhr.responseText);
+          Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Error: " + jsonResponse.message,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        } catch (e) {
+          Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Unexpected error. Please check logs.",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        }
+      }
+    });
   });
 });
 
