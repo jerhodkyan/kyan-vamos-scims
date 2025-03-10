@@ -84,3 +84,7 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /workspaces/kyan-vamos-scims/pages/server_side/process_individualSave.php on line 87
+[07-Mar-2025 14:10:40 Asia/Manila] Database Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'individual_id' in 'field list'
+[07-Mar-2025 14:10:40 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\kyan-vamos-scims\pages\server_side\process_individualSave.php on line 91
+[07-Mar-2025 14:12:21 Asia/Manila] Database Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'individual_id' in 'field list'
+[07-Mar-2025 14:12:21 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\kyan-vamos-scims\pages\server_side\process_individualSave.php on line 91

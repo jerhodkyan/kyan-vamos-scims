@@ -1,7 +1,7 @@
 <?php
 
 /// Load environment variables from .env file
-$config = parse_ini_file(__DIR__ . '/../.env');
+$envPath = __DIR__ . '/../../.env';
 
 try {
    $con_scims = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password, [

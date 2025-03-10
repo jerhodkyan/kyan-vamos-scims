@@ -271,7 +271,7 @@ $(document).ready(function () {
     width: "100%",
     ajax: {
       // url: "/vamos-local/pages/server_side/process_sccdrrmo.php",
-      url: "/pages/server_side/process_sccdrrmo.php",
+      url: "/kyan-vamos-scims/pages/server_side/process_sccdrrmo.php",
       type: "POST",
       dataType: "json",
       delay: 250,
@@ -418,35 +418,107 @@ $(document).ready(function () {
 // });
 
 
+// $(document).on("submit", "#personalInfoForm", function (e) {
+//   e.preventDefault(); // Prevent form submission if validation fails
+
+//   let isValid = true; // Assume form is valid
+//   let errorMessage = "";
+
+//   // Loop through all required inputs inside the form
+//   $("#personalInfoForm input[required], #personalInfoForm select[required]").each(function () {
+//     if (!$(this).val().trim()) {
+//       isValid = false;
+//       errorMessage += $(this).attr("name") + " is required.\n"; // Collect error messages
+//       $(this).addClass("is-invalid"); // Add Bootstrap error class (if using Bootstrap)
+//     } else {
+//       $(this).removeClass("is-invalid"); // Remove error class if fixed
+//     }
+//   });
+
+//   if (!isValid) {
+//     alert("Please fill in all required fields:\n" + errorMessage);
+//     return; // Stop execution if validation fails
+//   }
+
+//   // If all required fields are filled, proceed with FormData creation
+//   let formData = new FormData($("#personalInfoForm")[0]);
+
+//   $.ajax({
+//     url: "your-server-endpoint.php",
+//     type: "POST",
+//     data: formData,
+//     processData: false,
+//     contentType: false,
+//     success: function (response) {
+//       console.log("Success:", response);
+//     },
+//     error: function (xhr, status, error) {
+//       console.error("Error:", error);
+//     }
+//   });
+// });
+
+
 $(document).ready(function () {
   $("#formSave").click(function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form submission until validation passes
 
+    let isValid = true;
+    let errorMessage = "";
 
+    // Validate required fields in both forms
+    $("#personalInfoForm, #addressForm")
+      .find("input[required], select[required], textarea[required]")
+      .each(function () {
+        if (!$(this).val().trim()) {
+          isValid = false;
+          let fieldName = $(this).attr("name") || "This field"; // Get field name if available
+          errorMessage += `${fieldName} is required.\n`;
+          $(this).addClass("is-invalid"); // Add Bootstrap error class
+        } else {
+          $(this).removeClass("is-invalid"); // Remove error class if fixed
+        }
+      });
 
-    // let formData = new FormData($("#personalInfoForm")[0]);
-    let formData = getTableData();
-
-
-    let photoValue = $("#photo").attr("src"); 
-    let extractedPhotoValue = photoValue.split("/images/")[1];
-    let entityNumValue = $("#entityNum").val();
-    let statusBadgeValue = $("#statusBadge").text();
-
-    formData.append('status', statusBadgeValue);
-    formData.append('photo', extractedPhotoValue);
-    formData.append('entityNum', entityNumValue);
-
-    // Convert tableData to JSON and append it to formData
-    // formData.append("educationData", JSON.stringify(getTableData()));
-
-
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ': ' + pair[1]);
+    if (!isValid) {
+      Swal.fire({
+        icon: "error",
+        title: "Missing Required Fields",
+        text: errorMessage,
+        confirmButtonText: "OK",
+      });
+      return; // Stop execution if validation fails
     }
 
+    // Create FormData objects for both forms
+    let formData = new FormData($("#personalInfoForm")[0]);
+    let addressFormData = new FormData($("#addressForm")[0]);
+
+    // Extract values
+    let photoValue = $("#photo").attr("src") || "";
+    let extractedPhotoValue = photoValue.includes("/images/") ? photoValue.split("/images/")[1] : photoValue;
+    let entityNumValue = $("#entityNum").val() || "";
+    let statusBadgeValue = $("#statusBadge").text().trim() || "Pending"; // Default if empty
+
+    // Append extra data
+    formData.append("photo", extractedPhotoValue);
+    formData.append("entityNum", entityNumValue);
+    formData.append("status", statusBadgeValue);
+
+    // Append addressFormData fields to formData
+    for (let [key, value] of addressFormData.entries()) {
+      formData.append(key, value);
+    }
+
+    // Debugging: Log all form data (optional)
+    console.log("FormData Entries:");
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ": " + pair[1]);
+    }
+
+    // AJAX Request
     $.ajax({
-      url: "../pages/server_side/process_individualSave.php",
+      url: "../pages/server_side/Create/individual_data.php",
       type: "POST",
       data: formData,
       processData: false,
@@ -462,19 +534,15 @@ $(document).ready(function () {
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            }
           });
 
-          // Reset the form
+          // Reset forms
           $("#personalInfoForm")[0].reset();
-          $(".select2").val(null).trigger("change");
+          $("#addressForm")[0].reset();
+          $("#entityNum").prop("disabled", false).val("").prop("disabled", true);
+          $(".select2").val(null).trigger("change"); // Reset Select2 dropdowns
           $("#photo").attr("src", "default.jpg");
-          $("#statusBadge").text('');
-
-          formData = new FormData();
+          $("#statusBadge").text("");
         } else {
           Swal.fire({
             toast: true,
@@ -483,13 +551,27 @@ $(document).ready(function () {
             title: "Error: " + response.message,
             showConfirmButton: false,
             timer: 3000,
-            timerProgressBar: true
+            timerProgressBar: true,
           });
         }
       },
       error: function (xhr, status, error) {
         console.error("AJAX Error:", error);
         console.error("Response Text:", xhr.responseText);
+
+        if (!xhr.responseText.trim()) {
+          Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "error",
+            title: "Server returned an empty response.",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+          });
+          return;
+        }
+
         try {
           let jsonResponse = JSON.parse(xhr.responseText);
           Swal.fire({
@@ -499,23 +581,25 @@ $(document).ready(function () {
             title: "Error: " + jsonResponse.message,
             showConfirmButton: false,
             timer: 3000,
-            timerProgressBar: true
+            timerProgressBar: true,
           });
         } catch (e) {
           Swal.fire({
             toast: true,
             position: "top-end",
             icon: "error",
-            title: "Unexpected error. Please check logs.",
+            title: "Invalid JSON response from server.",
             showConfirmButton: false,
             timer: 3000,
-            timerProgressBar: true
+            timerProgressBar: true,
           });
         }
-      }
+      },
     });
   });
 });
+
+
 
 //<---Educational Background JQuery Code--->
 const table = new DataTable('#education', {
@@ -616,21 +700,60 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".test", function () {
-    getTableData();
+    let tableData = getTableData();
 
-    // Send data using AJAX
-    // $.ajax({
-    //   url: "/your-server-endpoint", // Replace with your server URL
-    //   type: "POST",
-    //   contentType: "application/json", // Sending JSON data
-    //   data: JSON.stringify({ education: tableData }), // Convert to JSON string
-    //   success: function (response) {
-    //     console.log("Data successfully sent:", response);
-    //   },
-    //   error: function (xhr, status, error) {
-    //     console.error("Error sending data:", error);
-    //   }
-    // });
+    console.log(getTableData())
+
+    $.ajax({
+      url: "../pages/server_side/Create/educational_data.php",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        entityNum: $("#entityNum").val(),
+        educationData: getTableData()
+      }),
+      dataType: "json",
+      success: function (response) {
+        if (response.status === "success") {
+          Swal.fire({
+            toast: true,
+            icon: "success",
+            title: response.message, // Display success message from server
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        } else {
+          Swal.fire({
+            toast: true,
+            icon: "error",
+            title: response.message, // Display error message from server
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("❌ AJAX Error:", error);
+        console.error("❌ Response Text:", xhr.responseText);
+
+        Swal.fire({
+          toast: true,
+          icon: "error",
+          title: "Something went wrong. Please try again.",
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true
+        });
+      }
+    });
+
+
+
   });
 });
 
@@ -652,13 +775,14 @@ function getTableData() {
   });
 
   // Convert table data to JSON string
-  let tableDataJSON = JSON.stringify(tableData);
+  // let tableDataJSON = JSON.stringify(tableData);
 
-  // Append table data to FormData
-  let formData = new FormData($("#personalInfoForm")[0]);
-  formData.append("educationData", tableDataJSON);
+  // // Append table data to FormData
+  // let formData = new FormData($("#personalInfoForm")[0]);
+  // formData.append("educationData", tableDataJSON);
 
-  return formData; // Return the updated FormData object
+  // return formData; // Return the updated FormData object
   // console.log(tableData);
+  return tableData;
 }
 //<---Educational Background JQuery Code--->

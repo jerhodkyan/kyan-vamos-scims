@@ -1,5 +1,6 @@
 <?php
-include('../server_side/sccdrrmo_db_connection.php');
+// include('../server_side/sccdrrmo_db_connection.php');
+include('../server_side/db_connections.php');
 
 $numberofrecords = 5;
 

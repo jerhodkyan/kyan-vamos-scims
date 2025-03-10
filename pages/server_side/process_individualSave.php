@@ -1,10 +1,11 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', 0); // Prevents output of warnings/errors in AJAX response
+ini_set('display_errors', 1); // Prevents output of warnings/errors in AJAX response
 ini_set('log_errors', 1);
 ini_set('error_log', '../server_side/php_errors.log'); // Logs errors to a file
 
-include('../server_side/local_scims_db_connection.php');
+// include('../server_side/local_scims_db_connection.php');
+include('../server_side/db_connections.php');
 
 date_default_timezone_set('Asia/Manila');
 $response = [];
@@ -65,61 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $response['status'] = "success";
         $response['message'] = "Record successfully inserted!";
-    } catch (PDOException $e) {
-        error_log("Database Error: " . $e->getMessage()); // Logs error to php_errors.log
-        $response['status'] = "error";
-        $response['message'] = "Data Already registered.";
-    }
-
-
-    $educationData = $_POST['educationData'] ?? [];  // Get data from the POST request
-
-    // The SQL query for inserting data
-    $insert_education_sql = "INSERT INTO educational_background (
-        educ_id, entity_no, school_level, school_name, date_from, date_to, school_units_earned, year_graduated, honors_received, remarks
-    ) VALUES (
-        :educ_id, :entity_no, :school_level, :school_name, :date_from, :date_to, :school_units_earned, :year_graduated, :honors_received, :remarks
-    )";
-
-    //Save Individual Education
-    try {
-    // Prepare the SQL statement
-    $stmt = $pdo->prepare($insert_education_sql);
-
-        // Loop through the data and insert each record
-        foreach ($educationData as $entry) {
-
-        $entity_no = $_POST['entityNum'] ?? '';  // Replace this with the actual individual_id value, if available
-
-        // Generate a unique educ_id using uniqid
-        $educ_id = uniqid('edu', true);  // Generates a unique ID
-        $educ_id = str_replace('.', 'e', $educ_id);  // Replace dots with 'e' to make the ID more URL friendly
-        $educ_idValue = substr($educ_id, 0, 8) . '-' . substr($educ_id, 8, 4) . '-' . substr($educ_id, 12, 8) . '-' . substr($educ_id, 20, 4);
-
-        // Get the 'period' field and split it into two dates
-        $period = $entry['period'];
-        $dates = explode(" - ", $period);  // Split period by the " - " separator
-        $date_from = $dates[0];  // First date
-        $date_to = $dates[1];  // Second date
-        
-        // Bind the data to the prepared statement
-        $stmt->bindParam(':educ_id', $educ_idValue);  // Corrected to bind $educ_idValue
-        $stmt->bindParam(':entity_no', $entity_no);  // Bind the individual_id (you may need to get this from elsewhere)
-        $stmt->bindParam(':school_level', $entry['level']);
-        $stmt->bindParam(':school_name', $entry['schoolName']);
-        $stmt->bindParam(':date_from', $date_from);
-        $stmt->bindParam(':date_to', $date_to);
-        $stmt->bindParam(':school_units_earned', $entry['unitsEarned']);
-        $stmt->bindParam(':year_graduated', $entry['yearGraduated']);
-        $stmt->bindParam(':honors_received', $entry['honors']);
-        $stmt->bindParam(':remarks', $entry['remarks']);
-
-        // Execute the query
-        $stmt->execute();
-        }
-
-        $response['status'] = "success";
-        $response['message'] = "Educational Record successfully inserted!";
     } catch (PDOException $e) {
         error_log("Database Error: " . $e->getMessage()); // Logs error to php_errors.log
         $response['status'] = "error";

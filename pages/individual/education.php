@@ -77,4 +77,4 @@
    </tbody>
 </table>
 
-<button class="btn btn-info btn-sm test">Test</button>
+<button class="btn btn-info btn-sm test">Save Education Data</button>
